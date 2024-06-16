@@ -1,33 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  CommonModule, LocationStrategy,
-  PathLocationStrategy
-} from '@angular/common';
+import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FullComponent } from './layouts/full/full.component';
-
-
-//import { NavigationComponent } from './shared/header/navigation.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SpinnerComponent } from './shared/spinner.component';
 import { HomeComponent } from './component/home/home.component';
-
+import { RickandmortyComponent } from './component/rickandmorty/rickandmorty.component';
+import { PokemonComponent } from './component/pokemon/pokemon.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SpinnerComponent,
-    HomeComponent
+    AppComponent,    
+    HomeComponent,   
+    RickandmortyComponent,
+    PokemonComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +34,6 @@ import { HomeComponent } from './component/home/home.component';
     NgbModule,
     RouterModule.forRoot(Approutes, { useHash: false }),
     FullComponent,
-    
     SidebarComponent,
   ],
   providers: [

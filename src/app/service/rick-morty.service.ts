@@ -10,11 +10,9 @@ export class RickMortyService {
 
   private apiUrl = 'https://rickandmortyapi.com/api/character';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getCharacters(): Observable<any> {
-    return this.http.get<any>(this.apiUrl).pipe(
-      map(response => response.results)
-    );
+  getAllData(page: number = 1): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/?page=${page}`);
   }
 }

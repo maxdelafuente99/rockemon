@@ -1,22 +1,39 @@
-<p>rickandmorty works!</p>
 <div class="row">
-    <div class="col-lg-3 col-md-6">    
-        <div class="card">
-            <img
-                class="card-img-top img-responsive"
-                src="assets/images/bg/bg1.jpg"
-                alt="Card image cap"
-            />
-            <div class="card-body">
-                <h4 class="card-title">Name</h4>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Species: </li>
-                    <li class="list-group-item">Status: </li>
-                    <li class="list-group-item">Gender: </li>
-                    <li class="list-group-item">Origin: </li>
-                </ul>
-                <a href="javascript:void(0)" class="btn btn-info">Detalles</a>
-            </div>
-        </div>
+  <div class="col-lg-3 col-md-6" *ngFor="let character of characters">
+    <div class="card shadow mb-4 border-0">
+      <img
+        class="card-img-top img-fluid"
+        [src]="character.image"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h4 class="card-title text-center">{{ character.name }}</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Species: {{ character.species }}</li>
+          <li class="list-group-item">Status: {{ character.status }}</li>
+          <li class="list-group-item">Gender: {{ character.gender }}</li>
+          <li class="list-group-item">Origin: {{ character.origin.name }}</li>
+        </ul>
+        <a href="javascript:void(0)" class="btn btn-info btn-block mt-3">Detalles</a>
+      </div>
     </div>
+  </div>
 </div>
+
+<nav aria-label="Page navigation example" class="mt-4">
+  <ul class="pagination justify-content-center flex-wrap">
+    <li class="page-item disabled" [class.disabled]="currentPage === 1">
+      <button class="page-link" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </button>
+    </li>
+    <li *ngFor="let page of [].constructor(totalPages); let i = index" class="page-item" [class.active]="currentPage === (i + 1)">
+      <button class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</button>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <button class="page-link" (click)="goToPage(currentPage + 1)" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </button>
+    </li>
+  </ul>
+</nav>
