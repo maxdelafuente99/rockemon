@@ -16,13 +16,21 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { RickandmortyComponent } from './component/rickandmorty/rickandmorty.component';
 import { PokemonComponent } from './component/pokemon/pokemon.component';
+import { RickandmortyCharacterDetailComponent } from './component/rickandmorty-character-detail/rickandmorty-character-detail.component';
+import { PokeCharacterDetailComponent } from './component/poke-character-detail/poke-character-detail.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,    
     HomeComponent,   
     RickandmortyComponent,
-    PokemonComponent
+    PokemonComponent,
+    RickandmortyCharacterDetailComponent,
+    PokeCharacterDetailComponent,
+
+
   ],
   imports: [
     CommonModule,

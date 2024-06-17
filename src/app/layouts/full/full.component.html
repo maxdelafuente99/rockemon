@@ -12,9 +12,11 @@
   <header class="topbar" data-navbarbg="skin1">
     <nav class="d-flex top-navbar navbar-expand-lg navbar-dark">
       <div class="navbar-header" [ngClass]="expandLogo ? 'expand-logo' : ''" data-logobg="skin6">
+        
+        
         <!-- Sidebar toggle para dispositivos móviles -->
         <a (click)="showMobileMenu = !showMobileMenu" class="nav-toggler waves-effect waves-light d-block d-lg-none" href="javascript:void(0)">
-          <i [ngClass]="showMobileMenu ? 'bi bi-text-left fs-6' : 'bi bi-text-left fs-6'"></i>
+          <i [ngClass]="showMobileMenu ? 'bi bi-text-left fs-6' : 'bi bi-text-left fs-6'"></i>          
         </a>
         
         <!-- Logo -->
@@ -35,20 +37,11 @@
       </form>
       <!-- Barra de búsqueda -->
 
-      <!-- Barra de navegación derecha -->
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/"></a>
-        </li>
-        
-        <!-- Puedes añadir más elementos de navegación aquí -->
-      </ul>
-      <!-- Fin de Barra de navegación derecha -->
     </nav>
   </header>
 
-  <aside class="left-sidebar" data-sidebarbg="skin6" (mouseover)="Logo()" (mouseout)="Logo()">
-    <app-sidebar></app-sidebar>
+  <aside class="left-sidebar" data-sidebarbg="skin6" (mouseover)="Logo()" (mouseout)="Logo()">    
+    <app-sidebar></app-sidebar>    
   </aside>
 
   <div class="page-wrapper">

@@ -1,28 +1,63 @@
+<!-- Filtros -->
+<div class="filters-container">
+  <div class="filters">
+    <label for="statusFilter">Status:</label>
+    <select id="statusFilter" class="form-control" [(ngModel)]="statusFilter" (change)="applyFilters(statusFilter, speciesFilter, genderFilter)">
+      <option value="">Todos</option>
+      <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+    </select>
+
+    <label for="speciesFilter">Species:</label>
+    <select id="speciesFilter" class="form-control" [(ngModel)]="speciesFilter" (change)="applyFilters(statusFilter, speciesFilter, genderFilter)">
+      <option value="">Todas</option>
+      <option *ngFor="let specie of species" [value]="specie">{{ specie }}</option>
+    </select>
+
+    <label for="genderFilter">Gender:</label>
+    <select id="genderFilter" class="form-control" [(ngModel)]="genderFilter" (change)="applyFilters(statusFilter, speciesFilter, genderFilter)">
+      <option value="">Todos</option>
+      <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+    </select>
+    <button class="btn btn-secondary" (click)="clearFilters()">Limpiar Filtros</button>
+  </div>
+</div>
+
+<!-- Listado de personajes -->
 <div class="row">
   <div class="col-lg-3 col-md-6" *ngFor="let character of characters">
+    <!-- Tarjeta de personaje -->
     <div class="card shadow mb-4 border-0">
-      <img
-        class="card-img-top img-fluid"
-        [src]="character.image"
-        alt="Card image cap"
-      />
+      <!-- Ícono de estado -->
+      <div class="status-icon" *ngIf="character.status">
+        <i [ngClass]="getStatusIconClass(character.status)"></i>
+      </div>
+
+      <!-- Resto de la tarjeta -->
+      <img class="card-img-top img-fluid" [src]="character.image" alt="Card image cap" />
       <div class="card-body">
-        <h4 class="card-title text-center">{{ character.name }}</h4>
+        <h5 class="card-title text-center">{{ character.name }}</h5>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Species: {{ character.species }}</li>
           <li class="list-group-item">Status: {{ character.status }}</li>
           <li class="list-group-item">Gender: {{ character.gender }}</li>
-          <li class="list-group-item">Origin: {{ character.origin.name }}</li>
         </ul>
-        <a href="javascript:void(0)" class="btn btn-info btn-block mt-3">Detalles</a>
+        <button class="btn btn-info btn-block mt-3" (click)="openDetails(character)">Detalles</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Detalle del personaje -->
+<app-rickandmorty-character-detail
+  *ngIf="selectedCharacter"
+  [character]="selectedCharacter"
+  (close)="closeDetails()">
+</app-rickandmorty-character-detail>
+
+<!-- Paginación -->
 <nav aria-label="Page navigation example" class="mt-4">
   <ul class="pagination justify-content-center flex-wrap">
-    <li class="page-item disabled" [class.disabled]="currentPage === 1">
+    <li class="page-item" [class.disabled]="currentPage === 1">
       <button class="page-link" (click)="goToPage(currentPage - 1)" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </button>

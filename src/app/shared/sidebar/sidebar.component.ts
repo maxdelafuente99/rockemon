@@ -11,19 +11,19 @@ import { CommonModule, NgIf } from '@angular/common';
 })
 export class SidebarComponent implements OnInit {
   showMenu = '';
-  public sidebarnavItems = [
+  public sidebarnavItems = [    
     {
-      title: 'Pokemon',
-      path: '/inicio/pokemon',
-      icon: 'bi bi-bug', // Puedes usar cualquier icono que desees
+      title: 'Rick and Morty',
+      path: '/inicio/rickandmorty',
+      icon: 'bi bi-mortarboard', // Puedes usar cualquier icono que desees
       class: '',
       extralink: false,
       submenu: []
     },
     {
-      title: 'Rick and Morty',
-      path: '/inicio/rickandmorty',
-      icon: 'bi bi-mortarboard', // Puedes usar cualquier icono que desees
+      title: 'Pokemon',
+      path: '/inicio/pokemon',
+      icon: 'bi bi-bug', // Puedes usar cualquier icono que desees
       class: '',
       extralink: false,
       submenu: []

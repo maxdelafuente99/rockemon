@@ -1,0 +1,16 @@
+<div class="modal" *ngIf="character">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ character.name }}</h2>
+    <img [src]="character.sprites.front_default" alt="{{ character.name }}" class="img-fluid" />
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">ID: {{ character.id }}</li>
+      <li class="list-group-item">Height: {{ character.height }}</li>
+      <li class="list-group-item">Weight: {{ character.weight }}</li>
+      <li class="list-group-item">Base Experience: {{ character.base_experience }}</li>
+      <li class="list-group-item">Species: {{ character.species.name }}</li>
+      <li class="list-group-item">Abilities: {{ abilitiesList }}</li>
+
+    </ul>
+  </div>
+</div>

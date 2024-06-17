@@ -8,12 +8,12 @@ import { PokemonService } from 'src/app/service/pokemon.service';
 })
 export class PokemonComponent implements OnInit {
 
- 
   characters: any[] = [];
   currentPage: number = 1;
   totalPages: number = 0;
-  pageSize: number = 10; // Tamaño de página
+  pageSize: number = 12; // Tamaño de página
   pagesArray: number[] = [];
+  selectedCharacter: any = null;
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -23,10 +23,10 @@ export class PokemonComponent implements OnInit {
 
   loadCharacters(): void {
     const offset = (this.currentPage - 1) * this.pageSize;
-    this.pokemonService.getCharacters(offset, this.pageSize).subscribe((data: any[]) => {
+    this.pokemonService.getCharacters(offset, this.pageSize).subscribe((data: any) => {
       console.log('Characters data:', data);
-      this.characters = data;
-      this.totalPages = Math.ceil(data.length / this.pageSize);
+      this.characters = data.characters;
+      this.totalPages = Math.ceil(data.count / this.pageSize);
       this.pagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
     });
   }
@@ -35,6 +35,15 @@ export class PokemonComponent implements OnInit {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
       this.loadCharacters();
+      window.scrollTo(0, 0);
     }
+  }
+
+  openDetails(character: any): void {
+    this.selectedCharacter = character;
+  }
+
+  closeDetails(): void {
+    this.selectedCharacter = null;
   }
 }

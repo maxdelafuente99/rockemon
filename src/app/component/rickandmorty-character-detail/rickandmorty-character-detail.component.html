@@ -1,0 +1,15 @@
+<div class="modal" *ngIf="character">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ character.name }}</h2>
+    <img [src]="character.image" alt="{{ character.name }}" class="img-fluid" />
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Species: {{ character.species }}</li>
+      <li class="list-group-item">Status: {{ character.status }}</li>
+      <li class="list-group-item">Gender: {{ character.gender }}</li>
+      <li class="list-group-item">Origin: {{ character.origin.name }}</li>
+      <li class="list-group-item">Location: {{ character.location.name }}</li>
+      <li class="list-group-item">Number of Episodes: {{ episodeCount }}</li>
+    </ul>
+  </div>
+</div>

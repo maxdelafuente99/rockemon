@@ -15,10 +15,15 @@ export class PokemonService {
   getCharacters(offset: number = 0, limit: number = 10): Observable<any> {
     const url = `${this.apiUrl}?offset=${offset}&limit=${limit}`;
     return this.http.get<any>(url).pipe(
-      map(response => response.results),
-      switchMap(results => {
-        const detailedRequests = results.map((result: any) => this.http.get(result.url));
-        return forkJoin(detailedRequests);
+      switchMap(response => {
+        const count = response.count;
+        const detailedRequests = response.results.map((result: any) => this.http.get(result.url));
+        return forkJoin(detailedRequests).pipe(
+          map(characters => ({
+            characters,
+            count
+          }))
+        );
       })
     );
   }
