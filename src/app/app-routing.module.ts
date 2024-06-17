@@ -7,8 +7,8 @@ import { FullComponent } from './layouts/full/full.component';
 export const Approutes: Routes = [
   {
     path: '',
-    component: HomeComponent, // Cargar HomeComponent en la ruta vacía
-    pathMatch: 'full' // Asegurarse de que coincide exactamente con el path vacío
+    component: HomeComponent,
+    pathMatch: 'full' 
   },
   {
     path: 'inicio',

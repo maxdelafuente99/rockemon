@@ -17,13 +17,11 @@ export class PokeCharacterDetailComponent implements OnChanges {
       
     }
   }
-
-
   getAbilities(): string {
     return this.character.abilities.map((ability: any) => ability.ability.name).join(', ');
   }
 
   closeModal(): void {
-    this.close.emit(); // Emitir el evento para cerrar el modal
+    this.close.emit(); 
   }
 }
